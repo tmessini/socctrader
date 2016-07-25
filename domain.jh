@@ -1,0 +1,114 @@
+entity Region {
+	regionId Long,
+	regionName String
+}
+
+entity Country {
+	countryId Long,
+	countryName String
+}
+
+entity Location {
+	locationId Long,
+	city String
+}
+
+entity League {
+	leagueId Long,
+	leagueName String required
+}
+
+entity Team {
+	teamId Long,
+	teamName String
+}
+
+entity Game {
+	host Team,
+	visitor Team,
+	startDate ZonedDateTime,
+	endDate ZonedDateTime,
+}
+
+entity GameStats {
+	team Team,
+    goal Int,
+    shootInGP Int,
+    shootOutGP Int
+    corner Int,
+    ofside Int,
+    redCard Int,
+    yellowCard Int
+    foul Int
+}
+
+entity TeamStats {
+	team Team,
+    ranking Int
+}
+
+entity User{
+	userId Long,
+	firstName String,
+    lastName String,
+    email String
+}
+
+
+entity FinancialAction {
+	actionId Long,
+    action Action,
+    amount Double,
+    currency Currency
+}
+
+enum Action {
+    DEPOSIT, WITHDRAW
+}
+
+enum Currency {
+	EUR, USD
+}
+
+relationship OneToMany {
+	User{FinancialAction} to FinancialAction
+}
+relationship OneToOne {
+	Country{region} to Region
+}
+
+relationship OneToOne {
+	Team{league} to League
+}
+
+relationship OneToOne {
+	Location{country} to Country
+}
+
+relationship OneToOne {
+	League{location} to Location
+}
+
+relationship OneToMany {
+	Game{team} to Team
+}
+
+relationship OneToMany {
+	Game{team} to Team
+}
+
+relationship OneToMany {
+	Game{GameStat} to GameStats
+}
+
+relationship OneToOne {
+	TeamStats{Team} to Team
+}
+
+
+paginate Game with infinite-scroll
+paginate Team with pagination
+dto Team with mapstruct 
+service Game with GameClass
+
+	
