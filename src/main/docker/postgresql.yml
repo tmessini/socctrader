@@ -1,0 +1,12 @@
+version: '2'
+services:
+    socctrader-postgresql:
+        container_name: socctrader-postgresql
+        image: postgres:9.5.3
+        # volumes:
+        #     - ~/volumes/jhipster/socctrader/postgresql/:/var/lib/postgresql/
+        environment:
+            - POSTGRES_USER=socctrader
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432
