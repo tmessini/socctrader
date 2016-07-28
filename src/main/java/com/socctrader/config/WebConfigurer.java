@@ -35,7 +35,7 @@ public class WebConfigurer implements ServletContextInitializer, EmbeddedServlet
     private Environment env;
 
     @Inject
-    private JHipsterProperties jHipsterProperties;
+    private Properties properties;
 
     @Autowired(required = false)
     private MetricRegistry metricRegistry;
@@ -98,7 +98,7 @@ public class WebConfigurer implements ServletContextInitializer, EmbeddedServlet
     public CorsFilter corsFilter() {
         log.debug("Registering CORS filter");
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        CorsConfiguration config = jHipsterProperties.getCors();
+        CorsConfiguration config = properties.getCors();
         source.registerCorsConfiguration("/api/**", config);
         source.registerCorsConfiguration("/v2/api-docs", config);
         source.registerCorsConfiguration("/oauth/**", config);

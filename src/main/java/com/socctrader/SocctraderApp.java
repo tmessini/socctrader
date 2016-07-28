@@ -2,7 +2,7 @@ package com.socctrader;
 
 import com.socctrader.config.Constants;
 import com.socctrader.config.DefaultProfileUtil;
-import com.socctrader.config.JHipsterProperties;
+import com.socctrader.config.Properties;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +24,7 @@ import java.util.Collection;
 
 @ComponentScan
 @EnableAutoConfiguration(exclude = { MetricFilterAutoConfiguration.class, MetricRepositoryAutoConfiguration.class })
-@EnableConfigurationProperties({ JHipsterProperties.class, LiquibaseProperties.class })
+@EnableConfigurationProperties({ Properties.class, LiquibaseProperties.class })
 @EnableEurekaClient
 public class SocctraderApp {
 
@@ -38,7 +38,6 @@ public class SocctraderApp {
      * <p>
      * Spring profiles can be configured with a program arguments --spring.profiles.active=your-active-profile
      * <p>
-     * You can find more information on how profiles work with JHipster on <a href="http://jhipster.github.io/profiles/">http://jhipster.github.io/profiles/</a>.
      */
     @PostConstruct
     public void initApplication() {

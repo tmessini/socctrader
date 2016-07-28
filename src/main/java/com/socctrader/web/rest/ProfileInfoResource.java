@@ -1,6 +1,6 @@
 package com.socctrader.web.rest;
 
-import com.socctrader.config.JHipsterProperties;
+import com.socctrader.config.Properties;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,7 +21,7 @@ public class ProfileInfoResource {
     Environment env;
 
     @Inject
-    private JHipsterProperties jHipsterProperties;
+    private Properties properties;
 
     @RequestMapping(value = "/profile-info",
         method = RequestMethod.GET,
@@ -32,7 +32,7 @@ public class ProfileInfoResource {
 
     private String getRibbonEnv() {
         String[] activeProfiles = env.getActiveProfiles();
-        String[] displayOnActiveProfiles = jHipsterProperties.getRibbon().getDisplayOnActiveProfiles();
+        String[] displayOnActiveProfiles = properties.getRibbon().getDisplayOnActiveProfiles();
 
         if (displayOnActiveProfiles == null) {
             return null;

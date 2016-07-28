@@ -23,16 +23,16 @@ public class AsyncConfiguration implements AsyncConfigurer {
     private final Logger log = LoggerFactory.getLogger(AsyncConfiguration.class);
 
     @Inject
-    private JHipsterProperties jHipsterProperties;
+    private Properties properties;
 
     @Override
     @Bean(name = "taskExecutor")
     public Executor getAsyncExecutor() {
         log.debug("Creating Async Task Executor");
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setCorePoolSize(jHipsterProperties.getAsync().getCorePoolSize());
-        executor.setMaxPoolSize(jHipsterProperties.getAsync().getMaxPoolSize());
-        executor.setQueueCapacity(jHipsterProperties.getAsync().getQueueCapacity());
+        executor.setCorePoolSize(properties.getAsync().getCorePoolSize());
+        executor.setMaxPoolSize(properties.getAsync().getMaxPoolSize());
+        executor.setQueueCapacity(properties.getAsync().getQueueCapacity());
         executor.setThreadNamePrefix("socctrader-Executor-");
         return new ExceptionHandlingAsyncTaskExecutor(executor);
     }

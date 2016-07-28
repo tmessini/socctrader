@@ -1,6 +1,6 @@
 package com.socctrader.security.jwt;
 
-import com.socctrader.config.JHipsterProperties;
+import com.socctrader.config.Properties;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -32,17 +32,17 @@ public class TokenProvider {
     private long tokenValidityInSecondsForRememberMe;
 
     @Inject
-    private JHipsterProperties jHipsterProperties;
+    private Properties properties;
 
     @PostConstruct
     public void init() {
         this.secretKey =
-            jHipsterProperties.getSecurity().getAuthentication().getJwt().getSecret();
+            properties.getSecurity().getAuthentication().getJwt().getSecret();
 
         this.tokenValidityInSeconds =
-            1000 * jHipsterProperties.getSecurity().getAuthentication().getJwt().getTokenValidityInSeconds();
+            1000 * properties.getSecurity().getAuthentication().getJwt().getTokenValidityInSeconds();
         this.tokenValidityInSecondsForRememberMe =
-            1000 * jHipsterProperties.getSecurity().getAuthentication().getJwt().getTokenValidityInSecondsForRememberMe();
+            1000 * properties.getSecurity().getAuthentication().getJwt().getTokenValidityInSecondsForRememberMe();
     }
 
     public String createToken(Authentication authentication, Boolean rememberMe) {

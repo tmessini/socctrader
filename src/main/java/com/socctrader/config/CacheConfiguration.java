@@ -56,7 +56,7 @@ public class CacheConfiguration {
     }
 
     @Bean
-    public HazelcastInstance hazelcastInstance(JHipsterProperties jHipsterProperties) {
+    public HazelcastInstance hazelcastInstance(Properties properties) {
         log.debug("Configuring Hazelcast");
         Config config = new Config();
         config.setInstanceName("socctrader");
@@ -91,7 +91,7 @@ public class CacheConfiguration {
         
         
         config.getMapConfigs().put("default", initializeDefaultMapConfig());
-        config.getMapConfigs().put("com.socctrader.domain.*", initializeDomainMapConfig(jHipsterProperties));
+        config.getMapConfigs().put("com.socctrader.domain.*", initializeDomainMapConfig(properties));
 
         hazelcastInstance = HazelcastInstanceFactory.newHazelcastInstance(config);
 
@@ -136,10 +136,10 @@ public class CacheConfiguration {
         return mapConfig;
     }
 
-    private MapConfig initializeDomainMapConfig(JHipsterProperties jHipsterProperties) {
+    private MapConfig initializeDomainMapConfig(Properties properties) {
         MapConfig mapConfig = new MapConfig();
 
-        mapConfig.setTimeToLiveSeconds(jHipsterProperties.getCache().getTimeToLiveSeconds());
+        mapConfig.setTimeToLiveSeconds(properties.getCache().getTimeToLiveSeconds());
         return mapConfig;
     }
 

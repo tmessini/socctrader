@@ -33,9 +33,6 @@ public class Team implements Serializable {
     @JoinColumn(unique = true)
     private League league;
 
-    @ManyToOne
-    private Game game;
-
     public Long getId() {
         return id;
     }
@@ -68,13 +65,6 @@ public class Team implements Serializable {
         this.league = league;
     }
 
-    public Game getGame() {
-        return game;
-    }
-
-    public void setGame(Game game) {
-        this.game = game;
-    }
 
     @Override
     public boolean equals(Object o) {

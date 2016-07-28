@@ -4,14 +4,13 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.web.cors.CorsConfiguration;
 
 /**
- * Properties specific to JHipster.
  *
  * <p>
  *     Properties are configured in the application.yml file.
  * </p>
  */
 @ConfigurationProperties(prefix = "jhipster", ignoreUnknownFields = false)
-public class JHipsterProperties {
+public class Properties {
 
     private final Async async = new Async();
 

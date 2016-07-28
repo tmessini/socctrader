@@ -1,6 +1,6 @@
 package com.socctrader.web.filter;
 
-import com.socctrader.config.JHipsterProperties;
+import com.socctrader.config.Properties;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletResponse;
@@ -17,15 +17,15 @@ public class CachingHttpHeadersFilter implements Filter {
 
     private long CACHE_TIME_TO_LIVE = TimeUnit.DAYS.toMillis(1461L);
 
-    private JHipsterProperties jHipsterProperties;
+    private Properties properties;
 
-    public CachingHttpHeadersFilter(JHipsterProperties jHipsterProperties) {
-        this.jHipsterProperties = jHipsterProperties;
+    public CachingHttpHeadersFilter(Properties properties) {
+        this.properties = properties;
     }
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        CACHE_TIME_TO_LIVE = TimeUnit.DAYS.toMillis(jHipsterProperties.getHttp().getCache().getTimeToLiveInDays());
+        CACHE_TIME_TO_LIVE = TimeUnit.DAYS.toMillis(properties.getHttp().getCache().getTimeToLiveInDays());
     }
 
     @Override
