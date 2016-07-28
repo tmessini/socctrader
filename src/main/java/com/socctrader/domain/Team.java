@@ -65,7 +65,6 @@ public class Team implements Serializable {
         this.league = league;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {

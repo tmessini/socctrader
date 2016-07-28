@@ -20,8 +20,6 @@ public class TeamDTO implements Serializable {
 
     private Long leagueId;
     
-    private Long gameId;
-    
     public Long getId() {
         return id;
     }
@@ -50,14 +48,6 @@ public class TeamDTO implements Serializable {
 
     public void setLeagueId(Long leagueId) {
         this.leagueId = leagueId;
-    }
-
-    public Long getGameId() {
-        return gameId;
-    }
-
-    public void setGameId(Long gameId) {
-        this.gameId = gameId;
     }
 
     @Override

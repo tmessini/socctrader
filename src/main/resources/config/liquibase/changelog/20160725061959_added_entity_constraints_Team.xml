@@ -14,11 +14,5 @@
                                  referencedColumnNames="id"
                                  referencedTableName="league"/>
 
-        <addForeignKeyConstraint baseColumnNames="game_id"
-                                 baseTableName="team"
-                                 constraintName="fk_team_game_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="game"/>
-
     </changeSet>
 </databaseChangeLog>

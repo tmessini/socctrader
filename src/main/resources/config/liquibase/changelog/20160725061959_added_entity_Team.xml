@@ -31,10 +31,6 @@
                         <column name="league_id" type="bigint">
                 <constraints unique="true" nullable="true" />
             </column>
-            <column name="game_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
-
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
         
